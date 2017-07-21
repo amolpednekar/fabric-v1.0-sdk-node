@@ -17,9 +17,9 @@ var options = {
     user_id: 'admin',
     channel_id: 'myc',
     chaincode_id: 'test_marbles',
-    peer_url: 'grpc://localhost:7051',
-    event_url: 'grpc://localhost:7053',
-    orderer_url: 'grpc://localhost:7050'
+    peer_url: 'grpc://10.51.235.65:7051',
+    event_url: 'grpc://10.51.235.65:7053',
+    orderer_url: 'grpc://10.51.235.65:7050'
 };
 
 var channel = {};
