@@ -13,7 +13,7 @@ var path = require('path');
 var util = require('util');
 
 var options = {
-    wallet_path: path.join('','/home/fbadmin/FabricDevModeTest/fabric-samples/chaincode-docker-devmode/msp/admincerts'),
+    wallet_path: path.join('',''),
     user_id: 'admin',
     channel_id: 'myc',
     chaincode_id: 'test_marbles',
