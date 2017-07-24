@@ -3,17 +3,16 @@ var fs = require('fs');
 var path = require('path');
 
 var channel_name = 'myc';
-
 var client = new Client();
-
-var org1 = "Org1MSP";
+var org = "COP";
 
 var apeers = [{ url: "grpc://10.51.235.65:7051", eventurl: "grpc://10.51.235.65:7053" }];
 
 console.log("Calling getAdmin");
-admin = getAdmin();
+var myAdmin = getAdmin(client,org);
+console.log(myAdmin);
 
-function getAdmin(client, userOrg, pathOrg) {
+function getAdmin(client, userOrg) {
 
 	var keyPath = '/home/fbadmin/FabricDevModeTest/fabric-samples/chaincode-docker-devmode/msp/keystore';
 	var keyPEM = Buffer.from(readAllFiles(keyPath)[0]).toString();
@@ -21,13 +20,13 @@ function getAdmin(client, userOrg, pathOrg) {
 	var certPEM = readAllFiles(certPath)[0];
 	var cryptoSuite = Client.newCryptoSuite();
 	if (userOrg) {
-		cryptoSuite.setCryptoKeyStore(Client.newCryptoKeyStore({ path: "/hfc-test-kvs/" + pathOrg }));
+		cryptoSuite.setCryptoKeyStore(Client.newCryptoKeyStore({ path: "/hfc-test-kvs/" + "DEFAULT"}));
 		client.setCryptoSuite(cryptoSuite);
 	}
-	console("Got admin successfully!");
+	console.log("Got admin successfully!");
 	return Promise.resolve(client.createUser({
 		username: 'peer' + userOrg + 'Admin',
-		mspid: pathOrg,
+		mspid: "DEFAULT",
 		cryptoContent: {
 			privateKeyPEM: keyPEM.toString(),
 			signedCertPEM: certPEM.toString()
